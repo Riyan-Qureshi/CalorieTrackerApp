@@ -43,20 +43,20 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="log"
+        name="meals"
         options={{
-          title: 'Log Food',
+          title: 'Search Meals',
           tabBarIcon: ({ color, size }) => (
-            <Ionicons name="add-circle" size={size} color={color} />
+            <Ionicons name="restaurant" size={size} color={color} />
           ),
         }}
       />
       <Tabs.Screen
-        name="meals"
+        name="log"
         options={{
-          title: 'Intake List',
+          title: 'Food Log',
           tabBarIcon: ({ color, size }) => (
-            <Ionicons name="restaurant" size={size} color={color} />
+            <Ionicons name="add-circle" size={size} color={color} />
           ),
         }}
       />
