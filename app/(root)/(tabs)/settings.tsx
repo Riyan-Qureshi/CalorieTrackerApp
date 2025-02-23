@@ -7,7 +7,7 @@ import {
   TextInput,
   useColorScheme,
 } from 'react-native';
-import { useCalorieStore } from '../../store/calorieStore';
+import { useCalorieStore } from '../../../store/calorieStore';
 import { Ionicons } from '@expo/vector-icons';
 
 export default function SettingsScreen() {

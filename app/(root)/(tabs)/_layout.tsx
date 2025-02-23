@@ -16,7 +16,7 @@ export default function TabLayout() {
         tabBarStyle: {
           backgroundColor: '#0066EE',
           borderTopWidth: 0,
-          height: 60,
+          height: 70,
           paddingBottom: 8,
         },
         tabBarActiveTintColor: '#ffffff',
@@ -66,15 +66,6 @@ export default function TabLayout() {
           title: 'Settings',
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="settings" size={size} color={color} />
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="more"
-        options={{
-          title: 'More',
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons name="menu" size={size} color={color} />
           ),
         }}
       />

@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
   useColorScheme,
 } from 'react-native';
-import { useCalorieStore } from '../../store/calorieStore';
+import { useCalorieStore } from '../../../store/calorieStore';
 import { Ionicons } from '@expo/vector-icons';
 
 export default function HomeScreen() {
@@ -30,21 +30,20 @@ export default function HomeScreen() {
   const remainingCalories = dailyGoal - totalCalories;
 
   return (
-    <ScrollView style={styles.container}>
+    <ScrollView className='h-full' style={[styles.container, {backgroundColor: isDark ? '#000' : '#f5f5f5'}]}>
+      {/* Title */}
       <View style={styles.header}>
-        <Text style={styles.title}>Today</Text>
-        <TouchableOpacity>
-          <Text style={styles.editButton}>Edit</Text>
-        </TouchableOpacity>
+        <Text style={[styles.title, {color: isDark ? '#fff' : '#000'}]}>Today</Text>
       </View>
 
-      <View style={styles.calorieCard}>
-        <Text style={styles.cardTitle}>Calories</Text>
+      {/* Calorie Card */}
+      <View style={[styles.calorieCard, {backgroundColor: isDark ? '#1a1a1a' : '#fff'}]}>
+        <Text style={[styles.cardTitle, {color: isDark ? '#fff' : '#000'}]}>Calories</Text>
         <Text style={styles.subtitle}>Remaining = Goal - Food</Text>
         
         <View style={styles.circleContainer}>
           <View style={styles.circle}>
-            <Text style={styles.remainingCalories}>{remainingCalories}</Text>
+            <Text style={[styles.remainingCalories, {color: isDark ? '#fff' : '#000'}]}>{remainingCalories}</Text>
             <Text style={styles.remainingLabel}>Remaining</Text>
           </View>
           
@@ -52,24 +51,24 @@ export default function HomeScreen() {
             <View style={styles.statItem}>
               <Ionicons name="flag" size={20} color="#666" />
               <Text style={styles.statLabel}>Base Goal</Text>
-              <Text style={styles.statValue}>{dailyGoal}</Text>
+              <Text style={[styles.statValue, {color: isDark ? '#fff' : '#000'}]}>{dailyGoal}</Text>
             </View>
             
             <View style={styles.statItem}>
               <Ionicons name="restaurant" size={20} color="#0066EE" />
               <Text style={styles.statLabel}>Food</Text>
-              <Text style={styles.statValue}>{totalCalories}</Text>
+              <Text style={[styles.statValue, {color: isDark ? '#fff' : '#000'}]}>{totalCalories}</Text>
             </View>
           </View>
         </View>
 
         {/* Feature Card Navigation Dot Indicator */}
-        <View style={styles.dotsContainer}>
+        {/* <View style={styles.dotsContainer}>
           <View style={[styles.dot, styles.activeDot]} />
           <View style={styles.dot} />
           <View style={styles.dot} />
           <View style={styles.dot} />
-        </View>
+        </View> */}
       </View>
     </ScrollView>
   );
@@ -78,7 +77,6 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f5f5f5',
   },
   header: {
     flexDirection: 'row',

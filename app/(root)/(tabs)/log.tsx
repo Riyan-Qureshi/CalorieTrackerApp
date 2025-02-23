@@ -9,7 +9,7 @@ import {
   TextInput,
   useColorScheme,
 } from 'react-native';
-import { useCalorieStore, Meal } from '../../store/calorieStore';
+import { useCalorieStore, Meal } from '../../../store/calorieStore';
 import { Ionicons } from '@expo/vector-icons';
 
 type MealSection = 'breakfast' | 'lunch' | 'dinner' | 'snack';
@@ -45,6 +45,7 @@ export default function LogScreen() {
     resetForm();
   };
 
+  // Reset 
   const resetForm = () => {
     setMealName('');
     setCalories('');
@@ -64,11 +65,12 @@ export default function LogScreen() {
     return meals.filter((meal) => meal.type === type);
   };
 
+  // Render Meal Section Functional Component
   const renderMealSection = (title: string, type: MealSection) => {
     const sectionMeals = getMealsByType(type);
     
     return (
-      <View style={styles.section}>
+      <View className='mt-10' style={[styles.section, {backgroundColor: isDark ? '#1a1a1a' : '#fff', shadowColor: isDark ? '#fff' : '#000'}]}>
         <View style={styles.sectionHeader}>
           <Text style={[styles.sectionTitle, { color: isDark ? '#fff' : '#000' }]}>
             {title}
@@ -93,7 +95,7 @@ export default function LogScreen() {
               key={meal.id}
               style={[
                 styles.mealItem,
-                { backgroundColor: isDark ? '#1a1a1a' : '#ffffff' },
+                { backgroundColor: isDark ? '#1a1a1a' : '#ffffff', shadowColor: isDark ? '#fff' : '#000' },
               ]}>
               <View style={styles.mealInfo}>
                 <Text style={[styles.mealName, { color: isDark ? '#fff' : '#000' }]}>
@@ -122,15 +124,17 @@ export default function LogScreen() {
     );
   };
 
+  // Screen Content
   return (
     <View style={[styles.container, { backgroundColor: isDark ? '#000' : '#f5f5f5' }]}>
-      <ScrollView style={styles.scrollView}>
+      <ScrollView className='flex align-middle px-5 h-full'>
         {renderMealSection('Breakfast', 'breakfast')}
         {renderMealSection('Lunch', 'lunch')}
         {renderMealSection('Dinner', 'dinner')}
         {renderMealSection('Snacks', 'snack')}
       </ScrollView>
 
+      {/* Add to Food Log Pop-up */}
       <Modal
         animationType="slide"
         transparent={true}
@@ -228,8 +232,12 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   section: {
-    marginBottom: 16,
     padding: 16,
+    borderRadius: 8,
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 2,
   },
   sectionHeader: {
     flexDirection: 'row',
@@ -254,7 +262,6 @@ const styles = StyleSheet.create({
     padding: 16,
     borderRadius: 8,
     marginBottom: 8,
-    shadowColor: '#000',
     shadowOffset: {
       width: 0,
       height: 1,
