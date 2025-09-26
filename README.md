@@ -1,4 +1,4 @@
-#Ohlone Hacks Hackathon Submission 2025
+# Ohlone Hacks Hackathon Submission 2025
 
 ## Get started
 
